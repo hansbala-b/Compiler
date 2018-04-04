@@ -1,0 +1,11 @@
+while(c){
+s1
+inc}$
+
+
+while(c){while(c){
+s1
+inc}
+inc}$
+
+

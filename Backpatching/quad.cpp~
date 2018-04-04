@@ -1,0 +1,140 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct quad
+{
+	string op;
+	string op1;
+	string op2;
+	string result;
+};
+int s=0;
+int main()
+{
+	vector<quad> e;
+	string x;
+	ifstream fp;
+	fp.open("o.txt");
+	while(getline(fp, x))
+	{
+		if(x[2]=='i' && x[3]=='f')
+		{
+		for(int i=2;x[i]!='\0';i++)
+		{
+			if(x[i]=='i' && x[i+1]=='f')
+			{
+				quad b;
+				b.op=x.substr(i,2);
+				i=i+2;
+				int tmp=i+1;
+				quad a;
+				i++;
+					while(x[i]!=' ')
+						i++;
+					a.op1=x.substr(tmp,i-tmp);
+					i=i+1;
+					tmp=i;
+					while(x[i]!=' ')
+						i++;
+					a.op=x.substr(tmp,i-tmp);
+					i=i+1;
+					tmp=i;
+					while(x[i]!=')')
+						i++;
+					a.op2=x.substr(tmp,i-tmp);
+					i=i+1;
+					ostringstream str1;
+				    str1 << s;
+					s=s+1; 
+				    string geek = str1.str();
+					a.result="F"+geek;
+				if(x[i]==' ')
+					i++;
+				if(x[i]=='g' && x[i+1]=='o' && x[i+2]=='t' && x[i+3]=='o')
+				{
+					i=i+4;
+				}
+				if(x[i]==' ')
+					i++;
+				tmp=i;
+				while(x[i]!='\0')
+					i++;
+				b.op1=x.substr(tmp,i-tmp);
+				b.op2=a.result;
+				e.push_back(a);
+				e.push_back(b);
+			}
+		}
+	}
+			else if(x[2]=='g' && x[3]=='o' && x[4]=='t' && x[5]=='o')
+			{
+				quad d;
+				d.op="goto";
+				if(x[6]!='\0')
+				{
+					d.op1=x.substr(6);
+				}
+				e.push_back(d);
+			}			
+			else
+			{
+				quad c;
+				int z=x.find("=");
+				c.result=x.substr(2,2);
+				int tmp1=z+2;
+				z=x.find("+");
+				if(z!=-1)
+				{
+					c.op="+";
+					c.op1=x.substr(tmp1,2);
+					c.op2=x.substr(z+2);
+					e.push_back(c);
+				}
+				else
+				{
+					z=x.find("-");
+					if(z!=-1)
+					{
+						c.op="-";
+						c.op1=x.substr(tmp1,2);
+						c.op2=x.substr(z+2);
+						e.push_back(c);
+					}
+					else
+					{
+						z=x.find("*");
+						if(z!=-1)
+						{
+							c.op="*";
+							c.op1=x.substr(tmp1,2);
+							c.op2=x.substr(z+2);
+							e.push_back(c);
+						}
+						else
+						{
+							z=x.find("/");
+							if(z!=-1)
+							{
+								c.op="/";
+								c.op1=x.substr(tmp1,2);
+								c.op2=x.substr(z+2);
+								e.push_back(c);
+							}
+
+							else
+							{
+								c.op1=x.substr(tmp1);
+								c.op="=";
+								e.push_back(c);
+							}
+						}
+					}
+				}
+			}
+	}
+	cout<<"op\top1\top\tresult"<<endl;
+	for(int i=0;i<e.size();i++)
+	{
+		cout<<e[i].op<<"\t"<<e[i].op1<<"\t"<<e[i].op2<<"\t"<<e[i].result<<endl;
+	}
+	return 0;
+}

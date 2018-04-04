@@ -1,0 +1,7 @@
+init
+while(c)
+{s1
+inc
+}
+
+

@@ -1,0 +1,83 @@
+Three Address Statements:
+0 t0 = b + c
+1 a = t0
+2 t1 = b + c
+3 t2 = t1 * 80
+4 t3 = 2 * 4
+5 t4 = t2 + t3
+6 t5 = d[t4]
+7 if(a < t5) goto 9
+8 goto 17
+9 t6 = b + c
+10 a = t6
+11 if(a < b) goto 13
+12 goto 19
+13 t7 = c + a
+14 c = t7
+15 goto 11
+16 goto 19
+17 t8 = y + y
+18 x = t8
+19 t9 = 4 * 80
+20 t10 = 3 * 4
+21 t11 = t9 + t10
+22 t12 = e[t11]
+23 t13 = t12 * c
+24 a = t13
+25 a = 0
+
+Basic Blocks:
+Block 0:
+	t0 = b + c
+	a = t0
+	t1 = b + c
+	t2 = t1 * 80
+	t3 = 2 * 4
+	t4 = t2 + t3
+	t5 = d[t4]
+	if(a < t5) goto 2
+
+Block 1:
+	goto 7
+
+Block 2:
+	t6 = b + c
+	a = t6
+
+Block 3:
+	if(a < b) goto 5
+
+Block 4:
+	goto 8
+
+Block 5:
+	t7 = c + a
+	c = t7
+	goto 3
+
+Block 6:
+	goto 8
+
+Block 7:
+	t8 = y + y
+	x = t8
+
+Block 8:
+	t9 = 4 * 80
+	t10 = 3 * 4
+	t11 = t9 + t10
+	t12 = e[t11]
+	t13 = t12 * c
+	a = t13
+	a = 0
+
+Flow Graph:
+0: 2 1 
+1: 7 
+2: 3 
+3: 5 4 
+4: 8 
+5: 3 
+6: 8 
+7: 8 
+8: 

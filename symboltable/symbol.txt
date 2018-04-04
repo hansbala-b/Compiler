@@ -1,0 +1,4 @@
+int a;
+int a;
+float a;
+int b=10;

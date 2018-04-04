@@ -1,0 +1,11 @@
+0 if(a > b) goto 2
+1 goto
+2 if(a < c) goto 4
+3 goto 7
+4 t0 = a + 1
+5 a = t0
+6 goto
+7 t1 = b + 1
+8 b = t1
+9 t2 = c - 1
+10 c = t2

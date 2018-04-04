@@ -1,0 +1,13 @@
+{
+int a,b,c;
+int ar[10];
+if(a > b )
+{
+	a = a + 1;
+}
+else
+{
+    ar[3]=0;
+	a=a+b*c;
+}
+}

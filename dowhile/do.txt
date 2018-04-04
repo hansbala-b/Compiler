@@ -1,0 +1,3 @@
+init do{s1 inc }while(c);$
+
+

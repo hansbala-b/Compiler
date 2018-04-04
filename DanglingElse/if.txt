@@ -1,0 +1,6 @@
+if(c){s1}$
+if(c){s1}if(c){s1}$
+if(c){if(c){s1}}else{s2}$
+if(c){if(c){s1}if(c){s1}}else{s1}$
+if(c){if(c){s1}else{s1}}else{if(c){s1}}$
+
